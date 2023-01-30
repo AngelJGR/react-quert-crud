@@ -6,7 +6,8 @@ function Products () {
 
     const {isLoading, data: products, isError, error} = useQuery({
         queryKey: 'products',
-        queryFn: getProducts
+        queryFn: getProducts,
+        select: products => products.sort((a, b) => b.id - a.id)
     })
 
     if (isLoading) return <div>Loading...</div>

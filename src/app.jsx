@@ -1,9 +1,13 @@
 import './App.css'
+import ProductForm from './components/ProductForm'
 import Products from './components/products'
 
 function App() {
   return (
-    <Products />
+    <>
+      <ProductForm />
+      <Products />
+    </>
   )
 }
 
