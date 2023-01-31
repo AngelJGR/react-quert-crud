@@ -15,23 +15,16 @@
       "inStock": true
     },
     {
-      "id": 3,
-      "name": "Keyboard",
-      "description": "keyboard gaming",
-      "price": 200,
-      "inStock": true
-    },
-    {
       "name": "Monitor",
       "description": "monitor gaming",
-      "price": "300",
+      "price": "400",
       "inStock": true,
       "id": 4
     },
     {
-      "name": "Router",
-      "description": "TP-LINK",
-      "price": "350",
+      "name": "Keyboard",
+      "description": "keyboard gaming",
+      "price": "200",
       "inStock": true,
       "id": 5
     }
