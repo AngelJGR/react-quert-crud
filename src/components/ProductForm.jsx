@@ -8,7 +8,6 @@ function ProductForm () {
     const addProductMutation = useMutation({
         mutationFn: createProduct,
         onSuccess: () => {
-            console.log('Success!!!')
             queryClient.invalidateQueries('products')
         }
     })
@@ -21,7 +20,6 @@ function ProductForm () {
             ...product,
             inStock: true 
         })
-        console.log('Handled', product)
     }
 
     return <form onSubmit={handleSubmit}>

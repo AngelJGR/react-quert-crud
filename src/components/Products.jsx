@@ -1,6 +1,5 @@
-// import React from "react";
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import { deleteProduct, getProducts } from '../api/productsAPI'
+import { deleteProduct, getProducts, updateProduct } from '../api/productsAPI'
 
 function Products () {
 
@@ -18,6 +17,13 @@ function Products () {
         }
     })
 
+    const updateProductMutation = useMutation({
+        mutationFn: updateProduct,
+        onSuccess: () => {
+            queryClient.invalidateQueries('products')
+        }
+    })
+
     if (isLoading) return <div>Loading...</div>
     else if (isError) return <div>Error: { error.message }</div>
 
@@ -27,8 +33,18 @@ function Products () {
         <p>{ product.description }</p>
         <p>{ product.price }</p>
         <button onClick={() => deleteProductMutation.mutate(product.id)}>delete</button>
-        <input type="checkbox" />
-        <label htmlFor="">In Stock</label>
+        <input 
+            type="checkbox"
+            id={product.id}
+            defaultChecked={product.inStock}
+            onClick={e => {
+                updateProductMutation.mutate({
+                    ...product,
+                    inStock: e.target.checked
+                })
+            }}
+        />
+        <label htmlFor={product.id}>In Stock</label>
         <hr />
     </div>)
 }
